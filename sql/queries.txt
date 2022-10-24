@@ -1,0 +1,5 @@
+% Get all quizzes a student has to take
+select * from QUIZ where id = any(select id from TAKES where TAKES.reg_no = 200911076) fetch  first 4 rows only;
+
+% Get 5 Questions for a sub_code
+select * from (select * from QUESTION where QUESTION.id = any(select id from QUESTION_IS_OF where sub_code = ICT3171) order by dbms_random.value ) where rownum <= 10;

@@ -1,0 +1,71 @@
+create table STUDENT(
+    reg_no varchar(9) primary key,
+    name varchar(50),
+    dept varchar(3),
+    section varchar(1),
+    pwd varchar(50)
+);
+
+create table TAKES(
+    reg_no varchar(9),
+    id varchar(20),
+    deadline date,
+    primary key(reg_no, id),
+    foreign key(reg_no) references STUDENT,
+    foreign key(id) references QUIZ(id)
+);
+
+create table ADMIN(
+    id varchar(20) primary key,
+    pwd varchar(50)
+);
+
+create table FACULTY(
+    id varchar(20) primary key,
+    name varchar(50),
+    dept varchar(3),
+    pwd varchar(50)
+);
+
+create table SUBJECT(
+    sub_code varchar(7) primary key,
+    name varchar(50),
+    sem int,
+    credits int
+);
+
+create table QUESTION(
+    id varchar(20),
+    prompt varchar(80),
+    choice_a varchar(30),
+    choice_b varchar(30),
+    choice_c varchar(30),
+    choice_d varchar(30),
+    correct_ans varchar(1),
+    primary key(id)
+);
+
+create table QUESTION_IS_OF(
+    id varchar(20),
+    sub_code varchar(7),
+    primary key(id, sub_code),
+    foreign key(id) references QUESTION,
+    foreign key(sub_code) references SUBJECT
+);
+
+create table QUIZ(
+    id varchar(20),
+    max_marks int,
+    duration float,
+    primary key(id),
+);
+
+create table QUIZ_IS_OF(
+    id varchar(20),
+    sub_code varchar(7),
+    primary key(id, sub_code),
+    foreign key(id) references QUIZ,
+    foreign key(sub_code) references SUBJECT
+);
+
+# pwd : orcl251202

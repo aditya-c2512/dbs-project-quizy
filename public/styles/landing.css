@@ -1,0 +1,52 @@
+body::before{
+    display:block;
+    content:'';
+    height: 70px;
+}
+.p-5{
+    padding: 4.5rem!important;
+}
+.symbol{
+    width: 40px;
+    height: 40px;
+}
+.tut-img{
+    height: 100%;
+    width: 100%;
+}
+.margin-top{
+    margin-top: 50px;
+}
+.tweak{ 
+    height: 275px;
+    width: 275px;
+    border-radius: 10px;
+}
+#login-button{
+    background-color: #f9f9f4; /* Green */
+    border: none;
+    color: rgb(10, 7, 7);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+}
+
+#signin-button{
+    background-color: #250fea; /* Green */
+    border: none;
+    color: rgb(251, 246, 246);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 23px;
+}
+.custom{
+    background-color: #e91e63!important;
+}
+.footc{
+    background-color: #e91e63!important;
+    
+}
