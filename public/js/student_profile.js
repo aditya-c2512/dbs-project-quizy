@@ -5,6 +5,9 @@ const Subject=document.querySelector('#subject');
 const RegNo=document.querySelector('#regno');
 const Section=document.querySelector('#section');
 
+var quiz_card = document.querySelector('#quiz_card1');
+let quiz_cards_container = document.querySelector(".card-container");
+
 StudentName.textContent='';
 Subject.textContent='';
 RegNo.textContent='';
@@ -49,10 +52,53 @@ document.addEventListener('readystatechange',event =>
                         }
                     })
                 })
+
+            fetch(`/get_quizzes?reg_no=${q_regno}`).then(
+                (response) =>
+                {
+                    response.json().then(
+                        (data) =>
+                        {
+                            let cardsString = ``;
+                            data.forEach(card => {
+                                    var subcode = '';
+                                    if(card.ID.startsWith('CYS')) subcode = 'ICT3156';
+                                    else if(card.ID.startsWith('DBS')) subcode = 'ICT3171';
+                                    else if(card.ID.startsWith('NLP')) subcode = 'DSE3156';
+                                    
+                                    cardsString += 
+                                    `<div class="card">
+                                        <div class="box">
+                                            <div class="content">
+                                            
+                                            <h3>QUIZ ID : ${card.ID}</h3>
+                                            <p>Duration:<span> ${card.DURATION}</span></p>
+                                            <p>Max Marks:<span> ${card.MAX_MARKS}</span></p>
+
+                                            <a href="/quiz?sub_code=${subcode}" target="_blank">Attempt Quiz</a>
+                                            </div>
+                                        </div>
+                                    </div>`;
+                            })
+
+                            quiz_cards_container.innerHTML = cardsString;
+                                
+                            
+                        }
+                    )
+                }
+            )
         }
     }
 })
 
+
+
+async function get_subjectcode(id){
+    let resp = await fetch('/get_subcode?quiz_id=' + id);
+
+    return (resp).json();
+}
 
 
 let msg=document.querySelector('button');

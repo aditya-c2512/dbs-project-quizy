@@ -79,3 +79,27 @@ insert into TAKES values('200907096', 'ADC001', '27-Oct-2022');
 insert into TAKES values('200907096', 'ADC002', '27-Oct-2022');
 insert into TAKES values('200907096', 'ADC003', '27-Oct-2022');
 insert into TAKES values('200907096', 'ADC004', '27-Oct-2022');
+
+insert into QUESTION values('DBS0011', 'DBS Q 1', 'A', 'B', 'C', 'D', 'A');
+insert into QUESTION values('DBS0012', 'DBS Q 2', 'A', 'B', 'C', 'D', 'B');
+insert into QUESTION values('DBS0013', 'DBS Q 3', 'A', 'B', 'C', 'D', 'C');
+insert into QUESTION values('DBS0014', 'DBS Q 4', 'A', 'B', 'C', 'D', 'D');
+insert into QUESTION values('DBS0015', 'DBS Q 5', 'A', 'B', 'C', 'D', 'B');
+insert into QUESTION values('DBS0016', 'DBS Q 6', 'A', 'B', 'C', 'D', 'C');
+insert into QUESTION values('DBS0017', 'DBS Q 7', 'A', 'B', 'C', 'D', 'A');
+insert into QUESTION values('DBS0018', 'DBS Q 8', 'A', 'B', 'C', 'D', 'D');
+insert into QUESTION values('DBS0019', 'DBS Q 9', 'A', 'B', 'C', 'D', 'C');
+insert into QUESTION values('DBS0021', 'DBS Q 10', 'A', 'B', 'C', 'D', 'B');
+insert into QUESTION values('DBS0022', 'DBS Q 11', 'A', 'B', 'C', 'D', 'A');
+
+insert into QUESTION_IS_OF values('DBS0011', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0012', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0013', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0014', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0015', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0016', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0017', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0018', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0019', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0021', 'ICT3171');
+insert into QUESTION_IS_OF values('DBS0022', 'ICT3171');

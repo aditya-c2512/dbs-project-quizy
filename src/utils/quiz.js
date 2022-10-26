@@ -27,6 +27,29 @@ async function get_quizzes(reg_no)
     conn.close();
     return rows;
 }
+async function get_subcode(quiz_id)
+{
+    conn = await oracledb.getConnection(
+        {
+            user : user_name,
+            password : password,
+            connectionString : 'localhost/orcl'
+        }
+    );
+    const query = `select sub_code from QUIZ_IS_OF where id='${quiz_id}'`;
+    const result = await conn.execute(
+        query,
+        [],
+        {
+            resultSet : true,
+            outFormat : oracledb.OUT_FORMAT_OBJECT
+        }
+    );
+    const rs = result.resultSet;
+    const row = rs.getRow();
+    conn.close();
+    return row;
+}
 async function get_questions(sub_code)
 {
     conn = await oracledb.getConnection(
@@ -38,7 +61,7 @@ async function get_questions(sub_code)
     );
     const query = `select * from 
                     (select * from QUESTION 
-                        where QUESTION.id = any(select id from QUESTION_IS_OF where sub_code = ${sub_code}) 
+                        where QUESTION.id = any(select id from QUESTION_IS_OF where sub_code = '${sub_code}') 
                     order by dbms_random.value ) 
                     where rownum <= 10`;
     const result = await conn.execute(
@@ -68,5 +91,6 @@ async function connect_db()
 module.exports = 
 {
     get_quizzes : get_quizzes,
-    get_questions : get_questions
+    get_questions : get_questions,
+    get_subcode : get_subcode
 }

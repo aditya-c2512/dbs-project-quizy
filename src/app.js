@@ -50,10 +50,18 @@ app.get(
 );
 
 app.get(
+    '/quiz',
+    (req, res) =>
+    {
+        res.sendFile(publicDir + '/quiz_ui.html');
+    }
+)
+
+app.get(
     '/student_login',
     (req, res) =>
     {
-        console.log(req);
+        // console.log(req);
         const reg_no = req.query.reg_no;
         const pwd = req.query.pwd;
         
@@ -102,7 +110,37 @@ app.get(
             else res.send('QUIZZES DO NOT EXIST');
         })();
     }
-)
+);
+
+app.get(
+    '/get_questions',
+    (req, res) =>
+    {
+        const sub_code = req.query.sub_code;
+        
+        (async () =>
+        {
+            const result = await quiz.get_questions(sub_code);
+            if(result) res.send(result);
+            else res.send('QUESTIONS DO NOT EXIST');
+        })();
+    }
+);
+
+app.get(
+    '/get_subcode',
+    (req, res) =>
+    {
+        const quiz_id = req.query.quiz_id;
+        
+        (async () =>
+        {
+            const result = await quiz.get_subcode(quiz_id);
+            if(result) res.send(result);
+            else res.send('SUBJECT CODE DO NOT EXIST');
+        })();
+    }
+);
 
 app.post(
     '/student_signup',
@@ -117,7 +155,7 @@ app.post(
         (async () =>
         {
             const result = await account.account_exists(reg_no);
-            console.log(result);
+            // console.log(result);
             if(result == true)
             {
                 console.log('ACCOUNT EXISTS');
